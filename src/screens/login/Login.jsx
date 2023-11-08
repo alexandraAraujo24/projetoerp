@@ -2,16 +2,20 @@ import { Text, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
 import { View } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import { colorTwo, coloroThree } from "../../config/default/colorDefault";
+import { colorThree, colorTwo } from "../../config/default/colorsDefault";
+import googleSignIn from "../../config/auth/googleSignin";
 
-function Login() {
+function Login({ navigation }) {
+  function btnG() {
+    googleSignIn(navigation);
+  }
   return (
     <View style={styles.view1}>
-      <TouchableOpacity style={styles.touch}>
+      <TouchableOpacity style={styles.touch} onPress={btnG}>
         <View style={styles.view2}>
           <AntDesign name="google" size={30} color={"black"} />
         </View>
-        <View style={styles.view2}>
+        <View style={styles.view3}>
           <Text style={styles.txt}>Continuar com google</Text>
         </View>
       </TouchableOpacity>
@@ -25,12 +29,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-        width: "100%",
-    backgroundColor:coloroThree
+    width: "100%",
+    backgroundColor: colorThree,
   },
   view2: {
     height: 50,
     width: 50,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  view3: {
+    height: 50,
+    width: 250,
     alignItems: "center",
     justifyContent: "center",
   },
